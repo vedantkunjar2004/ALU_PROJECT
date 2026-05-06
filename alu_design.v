@@ -1,3 +1,5 @@
+mescale 1ns / 1ps
+
 `default_nettype none
 
 module alu #( parameter DATA_WIDTH = 8, parameter RES_WIDTH  = 2 * DATA_WIDTH)(
@@ -20,16 +22,17 @@ module alu #( parameter DATA_WIDTH = 8, parameter RES_WIDTH  = 2 * DATA_WIDTH)(
 );
 
     reg [1:0]count;
-    reg [DATA_WIDTH-1:0]temp1, temp2;
+    reg [1:0]count2;
+    reg [DATA_WIDTH-1:0]temp1, temp2, temp3;
 
-    wire [DATA_WIDTH:0]unsigned_add_result = {1'b0, op_a} + {1'b0, op_b};
-    wire [DATA_WIDTH:0]unsigned_add_cin_result = {1'b0, op_a} + {1'b0, op_b} + {{DATA_WIDTH{1'b0}}, c_in};
+    wire [DATA_WIDTH:0]uadd_result = {1'b0, op_a} + {1'b0, op_b};
+    wire [DATA_WIDTH:0]uadd_cin_result = {1'b0, op_a} + {1'b0, op_b} + {{DATA_WIDTH{1'b0}}, c_in};
 
     wire signed [DATA_WIDTH-1:0]s_a = op_a;
     wire signed [DATA_WIDTH-1:0]s_b = op_b;
 
-    wire signed [DATA_WIDTH:0]sign_add_result = s_a + s_b;
-    wire signed [DATA_WIDTH:0]sign_sub_result = s_a - s_b;
+    wire signed [DATA_WIDTH:0]sadd_result = s_a + s_b;
+    wire signed [DATA_WIDTH:0]ssub_result = s_a - s_b;
 
     always @(posedge clk or posedge rst) begin
         if (rst) begin
@@ -41,6 +44,7 @@ module alu #( parameter DATA_WIDTH = 8, parameter RES_WIDTH  = 2 * DATA_WIDTH)(
             c_out <= 1'b0;
             overflow <= 1'b0;
             count <= 2'd0;
+            count2 <= 2'd0;
             temp1 <= {DATA_WIDTH{1'b0}};
             temp2 <= {DATA_WIDTH{1'b0}};
         end
@@ -157,8 +161,8 @@ module alu #( parameter DATA_WIDTH = 8, parameter RES_WIDTH  = 2 * DATA_WIDTH)(
                     4'd0: begin
                         count <= 2'd0;
                         if (inp_valid == 2'b11) begin                                    //UNSIGNED ADD
-                            result <= {{(RES_WIDTH-DATA_WIDTH){1'b0}}, unsigned_add_result[DATA_WIDTH-1:0]};
-                            c_out  <= unsigned_add_result[DATA_WIDTH];
+                            result <= {{(RES_WIDTH-DATA_WIDTH){1'b0}}, uadd_result[DATA_WIDTH-1:0]};
+                            c_out  <= uadd_result[DATA_WIDTH];
                         end
                         else begin result <= {RES_WIDTH{1'b0}}; err <= 1'b1; end
                     end
@@ -175,8 +179,8 @@ module alu #( parameter DATA_WIDTH = 8, parameter RES_WIDTH  = 2 * DATA_WIDTH)(
                     4'd2: begin
                         count <= 2'd0;
                         if (inp_valid == 2'b11) begin
-                            result <= {{(RES_WIDTH-DATA_WIDTH){1'b0}}, unsigned_add_cin_result[DATA_WIDTH-1:0]};  //UNSIGNED ADD CIN
-                            c_out  <= unsigned_add_cin_result[DATA_WIDTH];
+                            result <= {{(RES_WIDTH-DATA_WIDTH){1'b0}}, uadd_cin_result[DATA_WIDTH-1:0]};  //UNSIGNED ADD CIN
+                            c_out  <= uadd_cin_result[DATA_WIDTH];
                         end
                         else begin result <= {RES_WIDTH{1'b0}}; err <= 1'b1; end
                     end
@@ -247,30 +251,30 @@ module alu #( parameter DATA_WIDTH = 8, parameter RES_WIDTH  = 2 * DATA_WIDTH)(
                     end
 
                     4'd10: begin
-                        if (inp_valid == 2'b11) begin                                       //SHIFT AND MULTIPLY
-                            case (count)
-                                2'd0: count <= 2'd1;
+                        if (inp_valid == 2'b11) begin                            //SHIFT AND MULTIPLY
+                            case (count2)
+                                2'd0: count2 <= 2'd1;
                                 2'd1: begin
-                                    temp1 <= op_a << 1;
-                                    count <= 2'd2;
+                                    temp3 <= op_a << 1;
+                                    count2 <= 2'd2;
                                 end
                                 2'd2: begin
-                                    result <= temp1 * op_b;
-                                    count  <= 2'd0;
+                                    result <= temp3 * op_b;
+                                    count2  <= 2'd0;                            
                                 end
-                                default: count <= 2'd0;
+                                default: count2 <= 2'd0;
                             endcase
                         end
-                        else begin result <= {RES_WIDTH{1'b0}}; count <= 2'd0; err <= 1'b1; end
+                        else begin result <= {RES_WIDTH{1'b0}}; count2 <= 2'd0; err <= 1'b1; end
                     end
 
                     4'd11: begin
                         count <= 2'd0;
                         if (inp_valid == 2'b11) begin
-                            result   <= {{(RES_WIDTH-DATA_WIDTH){1'b0}}, sign_add_result[DATA_WIDTH-1:0]};  //SIGNED ADD
-                            c_out    <= sign_add_result[DATA_WIDTH];
+                            result   <= {{(RES_WIDTH-DATA_WIDTH){1'b0}}, sadd_result[DATA_WIDTH-1:0]};  //SIGNED ADDITION
+                            c_out    <= sadd_result[DATA_WIDTH];
                             overflow <= (s_a[DATA_WIDTH-1] == s_b[DATA_WIDTH-1]) &&
-                                        (sign_add_result[DATA_WIDTH-1] != s_a[DATA_WIDTH-1]);
+                                        (sadd_result[DATA_WIDTH-1] != s_a[DATA_WIDTH-1]);
                         end
                         else begin result <= {RES_WIDTH{1'b0}}; err <= 1'b1; end
                     end
@@ -278,10 +282,10 @@ module alu #( parameter DATA_WIDTH = 8, parameter RES_WIDTH  = 2 * DATA_WIDTH)(
                     4'd12: begin
                         count <= 2'd0;
                         if (inp_valid == 2'b11) begin
-                            result   <= {{(RES_WIDTH-DATA_WIDTH){1'b0}}, sign_sub_result[DATA_WIDTH-1:0]};  //SIGNED SUB
-                            c_out    <= sign_sub_result[DATA_WIDTH];
+                            result   <= {{(RES_WIDTH-DATA_WIDTH){1'b0}}, ssub_result[DATA_WIDTH-1:0]};  //SIGNED SUBTRACTION
+                            c_out    <= ssub_result[DATA_WIDTH];
                             overflow <= (s_a[DATA_WIDTH-1] != s_b[DATA_WIDTH-1]) &&
-                                        (sign_sub_result[DATA_WIDTH-1] != s_a[DATA_WIDTH-1]);
+                                        (ssub_result[DATA_WIDTH-1] != s_a[DATA_WIDTH-1]);
                         end
                         else begin result <= {RES_WIDTH{1'b0}}; err <= 1'b1; end
                     end
