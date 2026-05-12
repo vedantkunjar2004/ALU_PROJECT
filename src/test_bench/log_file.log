@@ -1,0 +1,717 @@
+# vsim work.alu_testbench -l log_file.log -coverage -c -do "coverage save -onexit -codeAll coverage_file.ucdb; run -all; exit" 
+# Start time: 14:29:20 on May 12,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: alu_design_verify.v(329): (vopt-2697) MSB of part-select into 'OPB_w' is out of bounds.
+# ** Warning: alu_design_verify.v(329): (vopt-2697) LSB of part-select into 'OPB_w' is out of bounds.
+# ** Warning: alu_design_verify.v(345): (vopt-2697) MSB of part-select into 'OPB_w' is out of bounds.
+# ** Warning: alu_design_verify.v(345): (vopt-2697) LSB of part-select into 'OPB_w' is out of bounds.
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading work.alu_testbench(fast)
+# Loading work.alu(fast)
+# Loading work.alu_reference_model(fast)
+# coverage save -onexit -codeAll coverage_file.ucdb
+#  run -all
+# 
+# === Testing Arithmetic Operations (MODE=1) ===
+# [PASS]                                                                              ADD: OPA=0x01 OPB=0x01 CMD=0x0
+# [FAIL]                                                                              ADD: OPA=0xff OPB=0x01 CMD=0x0
+#   DUT: RES=0x0002 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0100 COUT=1 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                              ADD: OPA=0x00 OPB=0x00 CMD=0x0
+#   DUT: RES=0x0100 COUT=1 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [PASS]                                                                              SUB: OPA=0x01 OPB=0x01 CMD=0x1
+# [FAIL]                                                                              SUB: OPA=0x00 OPB=0x01 CMD=0x1
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0xffff COUT=0 OFLOW=1 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                              SUB: OPA=0x50 OPB=0x50 CMD=0x1
+#   DUT: RES=0xffff COUT=0 OFLOW=1 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ADD_CIN: OPA=0xff OPB=0x00 CMD=0x2
+#   DUT: RES=0x00a1 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0100 COUT=1 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [PASS]                                                                          ADD_CIN: OPA=0xff OPB=0x00 CMD=0x2
+# [FAIL]                                                                          ADD_CIN: OPA=0x01 OPB=0x01 CMD=0x2
+#   DUT: RES=0x0100 COUT=1 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0003 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          SUB_CIN: OPA=0x0a OPB=0x03 CMD=0x3
+#   DUT: RES=0xffff COUT=0 OFLOW=1 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0006 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          SUB_CIN: OPA=0x00 OPB=0x00 CMD=0x3
+#   DUT: RES=0x0006 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0xffff COUT=0 OFLOW=1 G=0 E=0 L=0 ERR=0
+# [PASS]                                                                          SUB_CIN: OPA=0x01 OPB=0x01 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x01 OPB=0x01 CMD=0x3
+# [FAIL]                                                                            INC_A: OPA=0x50 OPB=0x00 CMD=0x4
+#   DUT: RES=0x0002 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            INC_A: OPA=0xff OPB=0x00 CMD=0x4
+#   DUT: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0100 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            INC_A: OPA=0x0a OPB=0x00 CMD=0x4
+#   DUT: RES=0x0100 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x000b COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_A: OPA=0x49 OPB=0x00 CMD=0x5
+#   DUT: RES=0x0009 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0048 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_A: OPA=0x00 OPB=0x00 CMD=0x5
+#   DUT: RES=0x0048 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0xffff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_A: OPA=0x0a OPB=0x00 CMD=0x5
+#   DUT: RES=0xffff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0009 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            INC_B: OPA=0x00 OPB=0x50 CMD=0x6
+#   DUT: RES=0x0001 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            INC_B: OPA=0x00 OPB=0xff CMD=0x6
+#   DUT: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0100 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_B: OPA=0x00 OPB=0x49 CMD=0x7
+#   DUT: RES=0x00fe COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0048 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_B: OPA=0x00 OPB=0x00 CMD=0x7
+#   DUT: RES=0x0048 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0xffff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                      CMP (equal): OPA=0xc8 OPB=0x64 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0Zzz COUT=0 OFLOW=0 G=1 E=0 L=0 ERR=0
+# [FAIL]                                                                    CMP (greater): OPA=0x32 OPB=0xc8 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0Zzz COUT=0 OFLOW=0 G=0 E=0 L=1 ERR=0
+# [FAIL]                                                                       CMP (less): OPA=0x80 OPB=0x80 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0Zzz COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+# [FAIL]                                                                           MUL_AB: OPA=0xfe OPB=0xfe CMD=0x9
+#   DUT: RES=0xfe01 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0xff OPB=0xff CMD=0x9
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0xfe OPB=0xfe CMD=0x9
+#   DUT: RES=0xfe01 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0x03 OPB=0x04 CMD=0x9
+#   DUT: RES=0x0014 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0x00 OPB=0x05 CMD=0x9
+#   DUT: RES=0x0006 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0xff OPB=0xff CMD=0x9
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0x60 OPB=0x60 CMD=0x9
+#   DUT: RES=0x24c1 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0x7e OPB=0x7e CMD=0x9
+#   DUT: RES=0x3f01 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0x08 OPB=0x08 CMD=0x9
+#   DUT: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0x03 OPB=0x03 CMD=0x9
+#   DUT: RES=0x0010 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           MUL_AB: OPA=0x07 OPB=0x07 CMD=0x9
+#   DUT: RES=0x0040 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0xfe OPB=0x00 CMD=0xa
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0xff OPB=0x05 CMD=0xa
+#   DUT: RES=0x04f6 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0xfe OPB=0x00 CMD=0xa
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0x04 OPB=0x03 CMD=0xa
+#   DUT: RES=0x0018 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0x00 OPB=0x05 CMD=0xa
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0x7e OPB=0x01 CMD=0xa
+#   DUT: RES=0x00fc COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0x55 OPB=0x01 CMD=0xa
+#   DUT: RES=0x00aa COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0x04 OPB=0x02 CMD=0xa
+#   DUT: RES=0x0010 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0x02 OPB=0x02 CMD=0xa
+#   DUT: RES=0x0008 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                        SHIFT_MUL: OPA=0x01 OPB=0x04 CMD=0xa
+#   DUT: RES=0x0008 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0x10 OPB=0x20 CMD=0xb
+#   DUT: RES=0x0005 COUT=0 OFLOW=0 G=0 E=0 L=1 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0x20 OPB=0x10 CMD=0xb
+#   DUT: RES=0x0030 COUT=0 OFLOW=0 G=0 E=0 L=1 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0x20 OPB=0x20 CMD=0xb
+#   DUT: RES=0x0030 COUT=0 OFLOW=0 G=1 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0x70 OPB=0x70 CMD=0xb
+#   DUT: RES=0x0040 COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0xa0 OPB=0xa0 CMD=0xb
+#   DUT: RES=0x00e0 COUT=0 OFLOW=1 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0x10 OPB=0x10 CMD=0xb
+#   DUT: RES=0xff40 COUT=0 OFLOW=1 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0x70 OPB=0x90 CMD=0xb
+#   DUT: RES=0x0020 COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0x00 OPB=0x00 CMD=0xb
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=1 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0xff OPB=0xff CMD=0xb
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_ADD: OPA=0x00 OPB=0x00 CMD=0xb
+#   DUT: RES=0xfffe COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x50 OPB=0x30 CMD=0xc
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x30 OPB=0x50 CMD=0xc
+#   DUT: RES=0x0020 COUT=0 OFLOW=0 G=1 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x40 OPB=0x40 CMD=0xc
+#   DUT: RES=0xffe0 COUT=0 OFLOW=0 G=0 E=0 L=1 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x70 OPB=0x90 CMD=0xc
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0xa0 OPB=0x70 CMD=0xc
+#   DUT: RES=0xffe0 COUT=0 OFLOW=1 G=1 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x90 OPB=0x70 CMD=0xc
+#   DUT: RES=0x0030 COUT=0 OFLOW=1 G=0 E=0 L=1 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x50 OPB=0x10 CMD=0xc
+#   DUT: RES=0x0020 COUT=0 OFLOW=1 G=0 E=0 L=1 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x02 OPB=0xff CMD=0xc
+#   DUT: RES=0x0040 COUT=0 OFLOW=0 G=1 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x10 OPB=0xf0 CMD=0xc
+#   DUT: RES=0xff03 COUT=0 OFLOW=0 G=1 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x00 OPB=0x00 CMD=0xc
+#   DUT: RES=0xff20 COUT=0 OFLOW=0 G=1 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0xff OPB=0xff CMD=0xc
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                            S_SUB: OPA=0x00 OPB=0x00 CMD=0xc
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=1 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# 
+# === Testing Arithmetic Operations (INVALID=b01) ===
+# [PASS]                                                                              ADD: OPA=0x01 OPB=0x01 CMD=0x0
+# [PASS]                                                                              ADD: OPA=0xff OPB=0x01 CMD=0x0
+# [PASS]                                                                              ADD: OPA=0x00 OPB=0x00 CMD=0x0
+# [PASS]                                                                              SUB: OPA=0x01 OPB=0x01 CMD=0x1
+# [PASS]                                                                              SUB: OPA=0x00 OPB=0x01 CMD=0x1
+# [PASS]                                                                              SUB: OPA=0x50 OPB=0x50 CMD=0x1
+# [PASS]                                                                          ADD_CIN: OPA=0xff OPB=0x00 CMD=0x2
+# [PASS]                                                                          ADD_CIN: OPA=0xff OPB=0x00 CMD=0x2
+# [PASS]                                                                          ADD_CIN: OPA=0x01 OPB=0x01 CMD=0x2
+# [PASS]                                                                          SUB_CIN: OPA=0x0a OPB=0x03 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x00 OPB=0x00 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x01 OPB=0x01 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x01 OPB=0x01 CMD=0x3
+# [FAIL]                                                                            INC_A: OPA=0x50 OPB=0x00 CMD=0x4
+#   DUT: RES=0x0002 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            INC_A: OPA=0xff OPB=0x00 CMD=0x4
+#   DUT: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0100 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            INC_A: OPA=0x0a OPB=0x00 CMD=0x4
+#   DUT: RES=0x0100 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x000b COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_A: OPA=0x49 OPB=0x00 CMD=0x5
+#   DUT: RES=0x0009 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0048 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_A: OPA=0x00 OPB=0x00 CMD=0x5
+#   DUT: RES=0x0048 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0xffff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_A: OPA=0x0a OPB=0x00 CMD=0x5
+#   DUT: RES=0xffff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0009 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [PASS]                                                                            INC_B: OPA=0x00 OPB=0x50 CMD=0x6
+# [PASS]                                                                            INC_B: OPA=0x00 OPB=0xff CMD=0x6
+# [PASS]                                                                            DEC_B: OPA=0x00 OPB=0x49 CMD=0x7
+# [PASS]                                                                            DEC_B: OPA=0x00 OPB=0x00 CMD=0x7
+# [FAIL]                                                                      CMP (equal): OPA=0xc8 OPB=0x64 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                    CMP (greater): OPA=0x32 OPB=0xc8 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                       CMP (less): OPA=0x80 OPB=0x80 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [PASS]                                                                           MUL_AB: OPA=0xfe OPB=0xfe CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xff OPB=0xff CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xfe OPB=0xfe CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x03 OPB=0x04 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x00 OPB=0x05 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xff OPB=0xff CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x60 OPB=0x60 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x7e OPB=0x7e CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x08 OPB=0x08 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x03 OPB=0x03 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x07 OPB=0x07 CMD=0x9
+# [PASS]                                                                        SHIFT_MUL: OPA=0xfe OPB=0x00 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0xff OPB=0x05 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0xfe OPB=0x00 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x04 OPB=0x03 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x00 OPB=0x05 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x7e OPB=0x01 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x55 OPB=0x01 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x04 OPB=0x02 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x02 OPB=0x02 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x01 OPB=0x04 CMD=0xa
+# [PASS]                                                                            S_ADD: OPA=0x10 OPB=0x20 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x20 OPB=0x10 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x20 OPB=0x20 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x70 OPB=0x70 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0xa0 OPB=0xa0 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x10 OPB=0x10 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x70 OPB=0x90 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x00 OPB=0x00 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0xff OPB=0xff CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x00 OPB=0x00 CMD=0xb
+# [PASS]                                                                            S_SUB: OPA=0x50 OPB=0x30 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x30 OPB=0x50 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x40 OPB=0x40 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x70 OPB=0x90 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0xa0 OPB=0x70 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x90 OPB=0x70 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x50 OPB=0x10 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x02 OPB=0xff CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x10 OPB=0xf0 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x00 OPB=0x00 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0xff OPB=0xff CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x00 OPB=0x00 CMD=0xc
+# 
+# === Testing Arithmetic Operations (INVALID=b10) ===
+# [PASS]                                                                              ADD: OPA=0x01 OPB=0x01 CMD=0x0
+# [PASS]                                                                              ADD: OPA=0xff OPB=0x01 CMD=0x0
+# [PASS]                                                                              ADD: OPA=0x00 OPB=0x00 CMD=0x0
+# [PASS]                                                                              SUB: OPA=0x01 OPB=0x01 CMD=0x1
+# [PASS]                                                                              SUB: OPA=0x00 OPB=0x01 CMD=0x1
+# [PASS]                                                                              SUB: OPA=0x50 OPB=0x50 CMD=0x1
+# [PASS]                                                                          ADD_CIN: OPA=0xff OPB=0x00 CMD=0x2
+# [PASS]                                                                          ADD_CIN: OPA=0xff OPB=0x00 CMD=0x2
+# [PASS]                                                                          ADD_CIN: OPA=0x01 OPB=0x01 CMD=0x2
+# [PASS]                                                                          SUB_CIN: OPA=0x0a OPB=0x03 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x00 OPB=0x00 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x01 OPB=0x01 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x01 OPB=0x01 CMD=0x3
+# [PASS]                                                                            INC_A: OPA=0x50 OPB=0x00 CMD=0x4
+# [PASS]                                                                            INC_A: OPA=0xff OPB=0x00 CMD=0x4
+# [PASS]                                                                            INC_A: OPA=0x0a OPB=0x00 CMD=0x4
+# [PASS]                                                                            DEC_A: OPA=0x49 OPB=0x00 CMD=0x5
+# [PASS]                                                                            DEC_A: OPA=0x00 OPB=0x00 CMD=0x5
+# [PASS]                                                                            DEC_A: OPA=0x0a OPB=0x00 CMD=0x5
+# [FAIL]                                                                            INC_B: OPA=0x00 OPB=0x50 CMD=0x6
+#   DUT: RES=0x0001 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            INC_B: OPA=0x00 OPB=0xff CMD=0x6
+#   DUT: RES=0x0051 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0100 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_B: OPA=0x00 OPB=0x49 CMD=0x7
+#   DUT: RES=0x00fe COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0048 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            DEC_B: OPA=0x00 OPB=0x00 CMD=0x7
+#   DUT: RES=0x0048 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0xffff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                      CMP (equal): OPA=0xc8 OPB=0x64 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                    CMP (greater): OPA=0x32 OPB=0xc8 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                       CMP (less): OPA=0x80 OPB=0x80 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [PASS]                                                                           MUL_AB: OPA=0xfe OPB=0xfe CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xff OPB=0xff CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xfe OPB=0xfe CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x03 OPB=0x04 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x00 OPB=0x05 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xff OPB=0xff CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x60 OPB=0x60 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x7e OPB=0x7e CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x08 OPB=0x08 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x03 OPB=0x03 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x07 OPB=0x07 CMD=0x9
+# [PASS]                                                                        SHIFT_MUL: OPA=0xfe OPB=0x00 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0xff OPB=0x05 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0xfe OPB=0x00 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x04 OPB=0x03 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x00 OPB=0x05 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x7e OPB=0x01 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x55 OPB=0x01 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x04 OPB=0x02 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x02 OPB=0x02 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x01 OPB=0x04 CMD=0xa
+# [PASS]                                                                            S_ADD: OPA=0x10 OPB=0x20 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x20 OPB=0x10 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x20 OPB=0x20 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x70 OPB=0x70 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0xa0 OPB=0xa0 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x10 OPB=0x10 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x70 OPB=0x90 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x00 OPB=0x00 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0xff OPB=0xff CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x00 OPB=0x00 CMD=0xb
+# [PASS]                                                                            S_SUB: OPA=0x50 OPB=0x30 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x30 OPB=0x50 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x40 OPB=0x40 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x70 OPB=0x90 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0xa0 OPB=0x70 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x90 OPB=0x70 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x50 OPB=0x10 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x02 OPB=0xff CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x10 OPB=0xf0 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x00 OPB=0x00 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0xff OPB=0xff CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x00 OPB=0x00 CMD=0xc
+# 
+# === Testing Arithmetic Operations (INVALID=b00) ===
+# [PASS]                                                                              ADD: OPA=0x01 OPB=0x01 CMD=0x0
+# [PASS]                                                                              ADD: OPA=0xff OPB=0x01 CMD=0x0
+# [PASS]                                                                              ADD: OPA=0x00 OPB=0x00 CMD=0x0
+# [PASS]                                                                              SUB: OPA=0x01 OPB=0x01 CMD=0x1
+# [PASS]                                                                              SUB: OPA=0x00 OPB=0x01 CMD=0x1
+# [PASS]                                                                              SUB: OPA=0x50 OPB=0x50 CMD=0x1
+# [PASS]                                                                          ADD_CIN: OPA=0xff OPB=0x00 CMD=0x2
+# [PASS]                                                                          ADD_CIN: OPA=0xff OPB=0x00 CMD=0x2
+# [PASS]                                                                          ADD_CIN: OPA=0x01 OPB=0x01 CMD=0x2
+# [PASS]                                                                          SUB_CIN: OPA=0x0a OPB=0x03 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x00 OPB=0x00 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x01 OPB=0x01 CMD=0x3
+# [PASS]                                                                          SUB_CIN: OPA=0x01 OPB=0x01 CMD=0x3
+# [PASS]                                                                            INC_A: OPA=0x50 OPB=0x00 CMD=0x4
+# [PASS]                                                                            INC_A: OPA=0xff OPB=0x00 CMD=0x4
+# [PASS]                                                                            INC_A: OPA=0x0a OPB=0x00 CMD=0x4
+# [PASS]                                                                            DEC_A: OPA=0x49 OPB=0x00 CMD=0x5
+# [PASS]                                                                            DEC_A: OPA=0x00 OPB=0x00 CMD=0x5
+# [PASS]                                                                            DEC_A: OPA=0x0a OPB=0x00 CMD=0x5
+# [PASS]                                                                            INC_B: OPA=0x00 OPB=0x50 CMD=0x6
+# [PASS]                                                                            INC_B: OPA=0x00 OPB=0xff CMD=0x6
+# [PASS]                                                                            DEC_B: OPA=0x00 OPB=0x49 CMD=0x7
+# [PASS]                                                                            DEC_B: OPA=0x00 OPB=0x00 CMD=0x7
+# [FAIL]                                                                      CMP (equal): OPA=0xc8 OPB=0x64 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                    CMP (greater): OPA=0x32 OPB=0xc8 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                       CMP (less): OPA=0x80 OPB=0x80 CMD=0x8
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [PASS]                                                                           MUL_AB: OPA=0xfe OPB=0xfe CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xff OPB=0xff CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xfe OPB=0xfe CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x03 OPB=0x04 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x00 OPB=0x05 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0xff OPB=0xff CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x60 OPB=0x60 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x7e OPB=0x7e CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x08 OPB=0x08 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x03 OPB=0x03 CMD=0x9
+# [PASS]                                                                           MUL_AB: OPA=0x07 OPB=0x07 CMD=0x9
+# [PASS]                                                                        SHIFT_MUL: OPA=0xfe OPB=0x00 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0xff OPB=0x05 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0xfe OPB=0x00 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x04 OPB=0x03 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x00 OPB=0x05 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x7e OPB=0x01 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x55 OPB=0x01 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x04 OPB=0x02 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x02 OPB=0x02 CMD=0xa
+# [PASS]                                                                        SHIFT_MUL: OPA=0x01 OPB=0x04 CMD=0xa
+# [PASS]                                                                            S_ADD: OPA=0x10 OPB=0x20 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x20 OPB=0x10 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x20 OPB=0x20 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x70 OPB=0x70 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0xa0 OPB=0xa0 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x10 OPB=0x10 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x70 OPB=0x90 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x00 OPB=0x00 CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0xff OPB=0xff CMD=0xb
+# [PASS]                                                                            S_ADD: OPA=0x00 OPB=0x00 CMD=0xb
+# [PASS]                                                                            S_SUB: OPA=0x50 OPB=0x30 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x30 OPB=0x50 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x40 OPB=0x40 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x70 OPB=0x90 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0xa0 OPB=0x70 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x90 OPB=0x70 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x50 OPB=0x10 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x02 OPB=0xff CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x10 OPB=0xf0 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x00 OPB=0x00 CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0xff OPB=0xff CMD=0xc
+# [PASS]                                                                            S_SUB: OPA=0x00 OPB=0x00 CMD=0xc
+# 
+# === Testing Logical Operations (MODE=0) ===
+# [PASS]                                                                              AND: OPA=0xaa OPB=0x55 CMD=0x0
+# [FAIL]                                                                             NAND: OPA=0xaa OPB=0x55 CMD=0x1
+#   DUT: RES=0xffff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00ff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [PASS]                                                                               OR: OPA=0xaa OPB=0x55 CMD=0x2
+# [FAIL]                                                                              NOR: OPA=0xaa OPB=0x55 CMD=0x3
+#   DUT: RES=0xff00 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                              XOR: OPA=0xff OPB=0xff CMD=0x4
+#   DUT: RES=0x00ff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                             XNOR: OPA=0xff OPB=0xff CMD=0x5
+#   DUT: RES=0xffff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00ff COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            NOT_A: OPA=0xaa OPB=0xaa CMD=0x6
+#   DUT: RES=0xff00 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0055 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            NOT_B: OPA=0xaa OPB=0xaa CMD=0x7
+#   DUT: RES=0xff55 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0055 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [PASS]                                                                           SHR1_A: OPA=0xaa OPB=0x00 CMD=0x8
+# [FAIL]                                                                           SHL1_A: OPA=0x55 OPB=0x00 CMD=0x9
+#   DUT: RES=0x0054 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00aa COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                           SHR1_B: OPA=0x00 OPB=0xaa CMD=0xa
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0055 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                           SHL1_B: OPA=0x00 OPB=0x55 CMD=0xb
+#   DUT: RES=0x0054 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00aa COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROL_A_B: OPA=0xcc OPB=0x0b CMD=0xc
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0066 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROL_A_B: OPA=0xcc OPB=0x6b CMD=0xc
+#   DUT: RES=0x0066 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0066 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc1 OPB=0x60 CMD=0xc
+#   DUT: RES=0x0066 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00c1 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc2 OPB=0x61 CMD=0xc
+#   DUT: RES=0x00c1 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0085 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc3 OPB=0x62 CMD=0xc
+#   DUT: RES=0x0085 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x000f COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc4 OPB=0x63 CMD=0xc
+#   DUT: RES=0x000f COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0026 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc5 OPB=0x64 CMD=0xc
+#   DUT: RES=0x0026 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x005c COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc6 OPB=0x65 CMD=0xc
+#   DUT: RES=0x005c COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00d8 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc6 OPB=0x66 CMD=0xc
+#   DUT: RES=0x00d8 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00b1 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc6 OPB=0x67 CMD=0xc
+#   DUT: RES=0x00b1 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0063 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROL_A_B: OPA=0xc6 OPB=0x0X CMD=0xc
+#   DUT: RES=0x0063 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00XX COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x0b CMD=0xd
+#   DUT: RES=0x00xx COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0099 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x6b CMD=0xd
+#   DUT: RES=0x0099 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0099 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x00 CMD=0xd
+#   DUT: RES=0x0099 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00cc COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x01 CMD=0xd
+#   DUT: RES=0x00cc COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0066 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x02 CMD=0xd
+#   DUT: RES=0x0066 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0033 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x03 CMD=0xd
+#   DUT: RES=0x0033 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0099 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x04 CMD=0xd
+#   DUT: RES=0x0099 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00cc COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x05 CMD=0xd
+#   DUT: RES=0x00cc COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0066 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x06 CMD=0xd
+#   DUT: RES=0x0066 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0033 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xcc OPB=0x07 CMD=0xd
+#   DUT: RES=0x0033 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0099 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                          ROR_A_B: OPA=0xc6 OPB=0x0X CMD=0xd
+#   DUT: RES=0x0099 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00XX COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [FAIL]                                                                            extra: OPA=0xc6 OPB=0x0X CMD=0xf
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# 
+# === Testing Logical Operations (INVALID=b01) ===
+# [PASS]                                                                              AND: OPA=0xaa OPB=0x55 CMD=0x0
+# [PASS]                                                                             NAND: OPA=0xaa OPB=0x55 CMD=0x1
+# [PASS]                                                                               OR: OPA=0xaa OPB=0x55 CMD=0x2
+# [PASS]                                                                              NOR: OPA=0xaa OPB=0x55 CMD=0x3
+# [PASS]                                                                              XOR: OPA=0xff OPB=0xff CMD=0x4
+# [PASS]                                                                             XNOR: OPA=0xff OPB=0xff CMD=0x5
+# [FAIL]                                                                            NOT_A: OPA=0xaa OPB=0xaa CMD=0x6
+#   DUT: RES=0xff00 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0055 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [PASS]                                                                            NOT_B: OPA=0xaa OPB=0xaa CMD=0x7
+# [PASS]                                                                           SHR1_A: OPA=0xaa OPB=0x00 CMD=0x8
+# [FAIL]                                                                           SHL1_A: OPA=0x55 OPB=0x00 CMD=0x9
+#   DUT: RES=0x0054 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x00aa COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# [PASS]                                                                           SHR1_B: OPA=0x00 OPB=0xaa CMD=0xa
+# [PASS]                                                                           SHL1_B: OPA=0x00 OPB=0x55 CMD=0xb
+# [PASS]                                                                          ROL_A_B: OPA=0xcc OPB=0x0b CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xcc OPB=0x6b CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc1 OPB=0x60 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc2 OPB=0x61 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc3 OPB=0x62 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc4 OPB=0x63 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc5 OPB=0x64 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x65 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x66 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x67 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x0X CMD=0xc
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x0b CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x6b CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x00 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x01 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x02 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x03 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x04 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x05 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x06 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x07 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xc6 OPB=0x0X CMD=0xd
+# [FAIL]                                                                            extra: OPA=0xc6 OPB=0x0X CMD=0xf
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# 
+# === Testing Logical Operations (INVALID=b10) ===
+# [PASS]                                                                              AND: OPA=0xaa OPB=0x55 CMD=0x0
+# [PASS]                                                                             NAND: OPA=0xaa OPB=0x55 CMD=0x1
+# [PASS]                                                                               OR: OPA=0xaa OPB=0x55 CMD=0x2
+# [PASS]                                                                              NOR: OPA=0xaa OPB=0x55 CMD=0x3
+# [PASS]                                                                              XOR: OPA=0xff OPB=0xff CMD=0x4
+# [PASS]                                                                             XNOR: OPA=0xff OPB=0xff CMD=0x5
+# [PASS]                                                                            NOT_A: OPA=0xaa OPB=0xaa CMD=0x6
+# [FAIL]                                                                            NOT_B: OPA=0xaa OPB=0xaa CMD=0x7
+#   DUT: RES=0xff55 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [PASS]                                                                           SHR1_A: OPA=0xaa OPB=0x00 CMD=0x8
+# [PASS]                                                                           SHL1_A: OPA=0x55 OPB=0x00 CMD=0x9
+# [FAIL]                                                                           SHR1_B: OPA=0x00 OPB=0xaa CMD=0xa
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [FAIL]                                                                           SHL1_B: OPA=0x00 OPB=0x55 CMD=0xb
+#   DUT: RES=0x0054 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+# [PASS]                                                                          ROL_A_B: OPA=0xcc OPB=0x0b CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xcc OPB=0x6b CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc1 OPB=0x60 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc2 OPB=0x61 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc3 OPB=0x62 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc4 OPB=0x63 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc5 OPB=0x64 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x65 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x66 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x67 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x0X CMD=0xc
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x0b CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x6b CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x00 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x01 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x02 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x03 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x04 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x05 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x06 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x07 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xc6 OPB=0x0X CMD=0xd
+# [FAIL]                                                                            extra: OPA=0xc6 OPB=0x0X CMD=0xf
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# 
+# === Testing Logical Operations (INVALID=b00) ===
+# [PASS]                                                                              AND: OPA=0xaa OPB=0x55 CMD=0x0
+# [PASS]                                                                             NAND: OPA=0xaa OPB=0x55 CMD=0x1
+# [PASS]                                                                               OR: OPA=0xaa OPB=0x55 CMD=0x2
+# [PASS]                                                                              NOR: OPA=0xaa OPB=0x55 CMD=0x3
+# [PASS]                                                                              XOR: OPA=0xff OPB=0xff CMD=0x4
+# [PASS]                                                                             XNOR: OPA=0xff OPB=0xff CMD=0x5
+# [PASS]                                                                            NOT_A: OPA=0xaa OPB=0xaa CMD=0x6
+# [PASS]                                                                            NOT_B: OPA=0xaa OPB=0xaa CMD=0x7
+# [PASS]                                                                           SHR1_A: OPA=0xaa OPB=0x00 CMD=0x8
+# [PASS]                                                                           SHL1_A: OPA=0x55 OPB=0x00 CMD=0x9
+# [PASS]                                                                           SHR1_B: OPA=0x00 OPB=0xaa CMD=0xa
+# [PASS]                                                                           SHL1_B: OPA=0x00 OPB=0x55 CMD=0xb
+# [PASS]                                                                          ROL_A_B: OPA=0xcc OPB=0x0b CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xcc OPB=0x6b CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc1 OPB=0x60 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc2 OPB=0x61 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc3 OPB=0x62 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc4 OPB=0x63 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc5 OPB=0x64 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x65 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x66 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x67 CMD=0xc
+# [PASS]                                                                          ROL_A_B: OPA=0xc6 OPB=0x0X CMD=0xc
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x0b CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x6b CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x00 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x01 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x02 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x03 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x04 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x05 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x06 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xcc OPB=0x07 CMD=0xd
+# [PASS]                                                                          ROR_A_B: OPA=0xc6 OPB=0x0X CMD=0xd
+# [FAIL]                                                                            extra: OPA=0xc6 OPB=0x0X CMD=0xf
+#   DUT: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=1
+#   REF: RES=0x0000 COUT=0 OFLOW=0 G=0 E=0 L=0 ERR=0
+# 
+# === TEST SUMMARY ===
+# Total Tests: 416
+# PASS: 293
+# FAIL: 123
+# 
+# *** SOME TESTS FAILED ***
+# 
+# ** Note: $finish    : alu_tb.v(138)
+#    Time: 9025 ns  Iteration: 0  Instance: /alu_testbench
+# Saving coverage database on exit...
+# End time: 14:29:21 on May 12,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 4
