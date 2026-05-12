@@ -1,1 +1,1 @@
-https://mirafra2-my.sharepoint.com/:w:/r/personal/vedantkunjar_mirafra2_onmicrosoft_com/Documents/ALU%20docs/ALU_Project_Report.docx?d=we0c73ee4bff44b1b9fdb1e3f584c0c3a&csf=1&web=1&e=vbcpMK
+https://docs.google.com/document/d/1S8DmcmnrZ44RnpbnlD4k4ZhlES_DO0Sr/edit?usp=drive_link&ouid=101741971401991424961&rtpof=true&sd=true
